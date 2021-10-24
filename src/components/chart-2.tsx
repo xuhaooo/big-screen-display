@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
-import {px} from '../shared/px';
 import {baseEchartOptions} from '../shared/base-echart-options';
 import {createEchartOptions} from '../shared/create-echart-options'
 
@@ -10,7 +9,6 @@ export const Chart2 = () => {
   useEffect(()=>{
     var myChart = echarts.init(divRef.current);
     myChart.setOption(createEchartOptions({
-      ...baseEchartOptions,
       xAxis: {
         type: 'value',
         boundaryGap: [0, 0.01]
