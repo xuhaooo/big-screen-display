@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
-import {baseEchartOptions} from '../shared/base-echart-options';
 import {createEchartOptions} from '../shared/create-echart-options'
 
 
@@ -31,11 +30,11 @@ export const Chart2 = () => {
         {name: '嘉定区公安局', 2020: 2, 2021: Math.random() * 10},
         {name: '虹口区公安局', 2020: 2, 2021: Math.random() * 10},
       ]
-      x(newData)
+      updateData(newData)
     }, 1000)
   }, [])
 
-  const x = (data) => {
+  const updateData = (data) => {
     myChart.current.setOption(createEchartOptions({
       xAxis: {
         type: 'value',
@@ -92,7 +91,7 @@ export const Chart2 = () => {
 
   useEffect(() => {
     myChart.current = echarts.init(divRef.current)
-    x(data)
+    updateData(data)
   }, [])
 
   return (
