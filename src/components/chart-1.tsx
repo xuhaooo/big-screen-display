@@ -4,11 +4,39 @@ import {createEchartOptions} from '../shared/create-echart-options'
 
 export const Chart1 = () => {
   const divRef = useRef(null)
-  useEffect(()=>{
-    var myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartOptions({
+  const myChart = useRef(null)
+  const data = [
+    {name: '静安区公安局', number: 10},
+    {name: '徐汇区公安局', number: 20},
+    {name: '浦东新区公安局', number: 36},
+    {name: '黄埔区公安局', number: 41},
+    {name: '普陀区公安局', number: 15},
+    {name: '闵行区公安局', number: 26},
+    {name: '松江区公安局', number: 37},
+    {name: '嘉定区公安局', number: 18},
+    {name: '虹口区公安局', number: 29},
+  ]
+  useEffect(() => {
+    setInterval(() => {
+      const newData = [
+        {name: '静安区区', dataNumber: Math.random() * 100},
+        {name: '徐汇区', dataNumber: Math.random() * 100},
+        {name: '浦东区', dataNumber: Math.random() * 100},
+        {name: '黄埔区', dataNumber: Math.random() * 100},
+        {name: '普陀区', dataNumber: Math.random() * 100},
+        {name: '闵行区', dataNumber: Math.random() * 100},
+        {name: '松江区', dataNumber: Math.random() * 100},
+        {name: '嘉定区', dataNumber: Math.random() * 100},
+        {name: '虹口区', dataNumber: Math.random() * 100},
+      ]
+      updateData(newData)
+    }, 1500)
+  }, [])
+
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartOptions({
       xAxis: {
-        data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
+        data: data.map(i => i.name),
         axisTick: {show: false},
         axisLabel: {
           formatter(val) {
@@ -32,11 +60,17 @@ export const Chart1 = () => {
       series: [
         {
           type: 'bar',
-          data: [10, 20, 36, 41, 15, 26, 37, 18, 29]
+          data: data.map(i => i.dataNumber)
         }
       ]
     }));
+  }
+
+  useEffect(()=>{
+    myChart.current = echarts.init(divRef.current);
+    updateData(data)
   }, [])
+
   return (
     <div className="bordered 管辖统计">
       <h2>案发派出所管辖统计</h2>

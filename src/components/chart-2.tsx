@@ -99,8 +99,8 @@ export const Chart2 = () => {
       <h2>案件破获排名</h2>
       <div ref={divRef} className="chart"></div>
       <div className="legend">
-        <span className="first" />破案排名1
-        <span className="second" />破案排名2
+        <span className="first" />2020
+        <span className="second" />2021
       </div>
     </div>
   )

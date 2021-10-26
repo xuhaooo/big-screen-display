@@ -53,7 +53,7 @@ export const Chart8 = () => {
         <div className="main" ref={divRef} />
         <div className="text">年龄段</div>
       </div>
-      <div className="legend">
+      <div className="legend age">
         <span style={{background: colors[0]}} />10-20
         <span style={{background: colors[1]}} />20-30
         <span style={{background: colors[2]}} />30-40

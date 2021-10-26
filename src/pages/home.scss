@@ -47,21 +47,19 @@
     display: grid;
     grid-template: 
       "box1 box2 box4 box5" 755fr
-      "box1 box2 box4 box5" 755fr
-      "box3 box3 box4 box5" 363fr
-        / 366fr 361fr 811fr 747fr;
-    column-gap: px(28);
-    row-gap: px(28);
+      "box3 box3 box4 box5" 363fr / 366fr 361fr 811fr 747fr;
+    gap: px(28) px(28);
     padding-top: px(30);
 
     > section {
       text-align: center;
     }
+
     .bordered {
       border: 1px solid #0764bc;
       border-radius: 4px;
       position: relative;
-      box-shadow: 0 0 2px 0 #0f3361, inset 0 0 2px 0 #0f3361;
+      box-shadow: 0 0 2px 0 #0e325f, inset 0 0 2px 0 #0e325f;
       background: #0f113a;
       &::before {
         pointer-events: none;
@@ -203,7 +201,7 @@
       &-图2 {
         width: px(290);
         flex-shrink: 0;
-        .legend {
+        > .legend {
           justify-content: flex-start;
         }
       }

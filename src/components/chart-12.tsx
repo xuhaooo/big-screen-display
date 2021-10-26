@@ -6,18 +6,18 @@ import {px} from '../shared/px';
 export const Chart12 = () => {
   const divRef = useRef(null)
   const data = [
-    {value: 0.08, name: '东岗路'},
-    {value: 0.06, name: '段家滩'},
-    {value: 0.11, name: '雁北'},
-    {value: 0.09, name: '五泉山'},
-    {value: 0.12, name: '中山路'},
-    {value: 0.06, name: '庆阳路'},
-    {value: 0.08, name: '武都路'},
-    {value: 0.08, name: '酒泉路'},
-    {value: 0.08, name: '天水路'},
+    {value: 0.08, name: '南京路'},
+    {value: 0.06, name: '白玉路'},
+    {value: 0.11, name: '崇明路'},
+    {value: 0.09, name: '南京路'},
+    {value: 0.12, name: '白渡桥'},
+    {value: 0.06, name: '复兴中路'},
+    {value: 0.08, name: '广兰路'},
+    {value: 0.08, name: '枫桥路'},
+    {value: 0.08, name: '虹桥路'},
   ]
   useEffect(() => {
-    var myChart = echarts.init(divRef.current)
+    let myChart = echarts.init(divRef.current)
     myChart.setOption(createEchartOptions({
       xAxis: {show: false},
       yAxis: {show: false},

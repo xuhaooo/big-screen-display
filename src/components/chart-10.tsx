@@ -4,11 +4,31 @@ import {createEchartOptions} from '../shared/create-echart-options';
 
 export const Chart10 = () => {
   const divRef = useRef(null)
+  const myChart = useRef(null)
+  const data = [
+    {name: '入室抢劫', value: 40},
+    {name: '当街盗窃', value: 22},
+    {name: '团伙诈骗', value: 20},
+    {name: '刑事案件', value: 18},
+    {name: '民事案件', value: 32},
+  ]
   useEffect(() => {
-    var myChart = echarts.init(divRef.current)
-    myChart.setOption(createEchartOptions({
+    setInterval(() => {
+      const newData = [
+        {name: '入室抢劫', value: (Math.random() * 100).toFixed(0)},
+        {name: '当街盗窃', value: (Math.random() * 100).toFixed(0)},
+        {name: '团伙诈骗', value: (Math.random() * 100).toFixed(0)},
+        {name: '刑事案件', value: (Math.random() * 100).toFixed(0)},
+        {name: '民事案件', value: (Math.random() * 100).toFixed(0)},
+      ]
+      updateData(newData)
+    }, 2000)
+  }, [])
+
+  const updateData = (data) => {
+    myChart.current.setOption(createEchartOptions({
       xAxis: {
-        data: ['入室抢劫', '当街盗窃', '团伙诈骗', '刑事案件', '民事案件'],
+        data: data.map(i => i.name),
         axisTick: {show: false},
         axisLine: {
           lineStyle: {color: '#083B70'}
@@ -39,7 +59,7 @@ export const Chart10 = () => {
       series: [
         {
           type: 'bar',
-          data: [40, 22, 20, 18, 32],
+          data: data.map(i => i.value),
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
             offset: 0,
             color: '#0A97FB'
@@ -50,6 +70,11 @@ export const Chart10 = () => {
         }
       ]
     }))
+  }
+
+  useEffect(() => {
+    myChart.current = echarts.init(divRef.current)
+    updateData(data)
   }, [])
 
   return (
